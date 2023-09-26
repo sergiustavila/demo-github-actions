@@ -21,6 +21,7 @@ jobs:
               with:
                 root: "dist/"
     deploy:
+        needs: [test]
         environment:
             name: github-pages
             url: ${{ steps.deploymentID.outputs.page_url }}

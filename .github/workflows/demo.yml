@@ -17,4 +17,4 @@ jobs:
             - name: Hello World
               run: echo "Hello World"
             - name: Clone Repository
-              run: git clone git@github.com:sergiustavila/demo-github-actions.git  
+              uses: actions/checkout@v3 

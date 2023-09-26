@@ -23,9 +23,9 @@ jobs:
               with:
                 root: dist/
             - name: Check Environment
-              run: echo ${{secrets.author_name}}
+              run: echo "${{secrets.author_name}}"
             - name: Check version
-              run: echo ${{env.version}}
+              run: echo "${{env.version}}"
     deploy:
         needs: [test]
         environment:
@@ -38,7 +38,7 @@ jobs:
             - name: Clone Repository
               uses: actions/checkout@v3
             - name: Set environment
-              run: sed -i -e "s/{author_name}/${{secrets.author_name}}"
+              run: sed -i -e "s/{author_name}/${{secrets.author_name}}/g"
             - name: Setup github pages
               uses: actions/configure-pages@v3
             - name: Upload Artifact

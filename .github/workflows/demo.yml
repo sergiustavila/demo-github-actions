@@ -25,4 +25,5 @@ jobs:
               with:
                 path: "./dist/" 
             - name: Deploy web page
+              id: deploymentID
               uses: actions/deploy-pages@v2

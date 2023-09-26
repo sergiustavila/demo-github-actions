@@ -12,6 +12,9 @@ concurrency:
     cancel-in-progress: false
 jobs:
     test:
+        environment:
+            name: github-pages
+            url: ${{ steps.deploymentID.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
             - name: Hello World

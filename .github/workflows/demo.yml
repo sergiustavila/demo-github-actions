@@ -12,6 +12,8 @@ concurrency:
     cancel-in-progress: false
 jobs:
     test:
+        environment:
+            name: github-pages
         runs-on: ubuntu-latest
         steps:
             - name: Clone Repository
@@ -20,6 +22,10 @@ jobs:
               uses: Cyb3r-Jak3/html5validator-action@v7.2.0
               with:
                 root: dist/
+            - name: Check Environment
+              run: echo ${{secrets.author_name}}
+            - name: Check version
+              run: echo ${{version}}
     deploy:
         needs: [test]
         environment:
@@ -31,6 +37,8 @@ jobs:
               run: echo "Hello World"
             - name: Clone Repository
               uses: actions/checkout@v3
+            - name: Set environment
+              run: sed -i -e "s/{author_name}/${{secrets.author_name}}"
             - name: Setup github pages
               uses: actions/configure-pages@v3
             - name: Upload Artifact

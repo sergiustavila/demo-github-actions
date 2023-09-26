@@ -38,7 +38,7 @@ jobs:
             - name: Clone Repository
               uses: actions/checkout@v3
             - name: Set environment
-              run: sed -i -e "s/{author_name}/${{secrets.author_name}}/g"
+              run: sed -i -e "s/{author_name}/${{secrets.author_name}}/g" dist/index.html
             - name: Setup github pages
               uses: actions/configure-pages@v3
             - name: Upload Artifact
